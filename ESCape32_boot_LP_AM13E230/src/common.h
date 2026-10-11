@@ -1,0 +1,61 @@
+/*
+** Copyright (C) Arseny Vakhrushev <arseny.vakhrushev@me.com>
+**
+** This firmware is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, either version 3 of the License, or
+** (at your option) any later version.
+**
+** This firmware is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this firmware. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#pragma once
+
+#include <soc.h>
+#include "ti_sdk_dl_config.h"
+#include "config.h"
+
+#define CLK_CNT(rate) ((CLK + ((rate) >> 1)) / (rate))
+
+#ifdef IO_UC4
+#define IO_PIN 15
+#elif defined IO_PA2
+#define IO_PIN (IO_PAD - 15)
+#elif defined IO_PA6
+#define IO_PIN 2
+#define TIM3_IDR (GPIOA_IDR & 0x40) // A6
+#else
+#define IO_PIN (IO_PAD - 13)
+#define TIM3_IDR DL_GPIO_readPins(GPIO_SIG_TIMER_C1_PORT, GPIO_SIG_TIMER_C1_PIN) // A26/A27
+#endif
+
+extern char _rom[], _rom_end[], _ram_end[]; // Linker exports
+extern int wrp_level;
+
+void init(void);
+void initio(void);
+
+int recvbuf(char *buf, int len);
+void sendbuf(const char *buf, int len);
+int recvval(void);
+void sendval(int val);
+int recvdata(char *buf);
+void senddata(const char *buf, int len);
+
+// tiarmclang has no long_call; a Thumb-2 BL reaches RAM_C (0x00C18000) from flash anyway
+#if defined __clang__
+#define LONG_CALL
+#else
+#define LONG_CALL __attribute__((__long_call__))
+#endif
+
+uint32_t crc32(const char *buf, int len);
+int write(char *dst, const char *src, int len) LONG_CALL;
+void update(char *dst, const char *src, int len) LONG_CALL;
+void setwrp(int type);

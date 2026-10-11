@@ -1,0 +1,6 @@
+{
+  "reporterEnabled": "spec, ./lib/json-file-reporter.js",
+  "libJsonFileReporterJsReporterOptions": {
+    "output": "results/results.json"
+  }
+}

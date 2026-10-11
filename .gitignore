@@ -1,0 +1,7 @@
+# CCS build outputs
+ESCape32_boot_LP_AM13E230/Debug/
+ESCape32_boot_LP_AM13E230/Release*/
+.clangd
+# Test project
+node_modules/
+results/

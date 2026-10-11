@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?ccsproject version="1.0"?>
+<projectOptions>
+	<ccsVariant value="50:Theia-based"/>
+	<ccsVersion value="71.0.1"/>
+	<deviceFamily value="TMS470"/>
+	<connection value="common/targetdb/connections/TIXDS110_Connection.xml"/>
+	<executableActions value=""/>
+	<createSlaveProjects value=""/>
+	<templateProperties value="id=ESCape32_boot_LP_AM13E230.projectspec.ESCape32_boot_LP_AM13E230"/>
+	<activeTargetConfiguration value="targetConfigs/AM13E23019.ccxml"/>
+	<isTargetConfigurationManual value="false"/>
+	<origin value="C:\Users\anand\AppData\Local\Temp\claude\c--Users-anand-workspace-ccstheia\e4592fcb-07d8-47e6-81fb-778136dfabf2\scratchpad\projectspec_stage\ESCape32_boot_LP_AM13E230.projectspec"/>
+	<filesToOpen value=""/>
+</projectOptions>

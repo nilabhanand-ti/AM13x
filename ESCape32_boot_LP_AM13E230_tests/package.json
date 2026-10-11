@@ -1,0 +1,21 @@
+{
+  "name": "escape32-boot-lp-am13e230-hw-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hardware test suite (Mocha) for the ESCape32 bootloader migrated to LP-AM13E230 - drives the target through the CCS scripting API and the XDS110 backchannel UART.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node scripts/run-mocha.cjs",
+    "test:list": "node scripts/run-mocha.cjs --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "mocha": "^11.8.0",
+    "mocha-multi-reporters": "^1.5.2"
+  },
+  "dependencies": {
+    "serialport": "^13.0.0"
+  }
+}
